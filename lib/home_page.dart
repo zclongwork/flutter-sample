@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sample/layout/layout_constraint_page.dart';
 import 'package:flutter_sample/state/state_lifecycle.dart';
 
+import 'container/container_page.dart';
+
 class HomePage extends StatefulWidget {
   final String title;
 
@@ -13,12 +15,13 @@ class HomePage extends StatefulWidget {
 
 const String STATE_LIFECYCLE = "State 生命周期";
 const String ITEM_LAYOUT = "布局约束";
+const String ITEM_CONTAINER = "容器类组件";
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // 数据列表
-    final List<String> items = [STATE_LIFECYCLE, ITEM_LAYOUT, "Item 3"];
+    final List<String> items = [STATE_LIFECYCLE, ITEM_LAYOUT, ITEM_CONTAINER];
 
     return Scaffold(
       appBar: AppBar(
@@ -40,13 +43,22 @@ class _HomePageState extends State<HomePage> {
   }
 
   void _handleTap(BuildContext context, String title) {
-    if (title == STATE_LIFECYCLE) {
-      //未定义路由的跳转
-      Navigator.push(context, MaterialPageRoute(builder: (context) => StateLifeCycle()));
-    } else if (title == ITEM_LAYOUT) {
-      Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutConstraintPage()));
-    }else {
-      Navigator.pushNamed(context, "new_page", arguments: "Hello");
+    switch (title) {
+      case STATE_LIFECYCLE:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => StateLifeCycle()));
+        break;
+      case ITEM_LAYOUT:
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => LayoutConstraintPage()));
+        break;
+      case ITEM_CONTAINER:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ContainerPage()));
+        break;
+      default:
+        Navigator.pushNamed(context, "new_page", arguments: "Hello");
+        break;
     }
   }
 }
