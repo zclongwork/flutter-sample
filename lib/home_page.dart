@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/layout/layout_constraint_page.dart';
 import 'package:flutter_sample/state/state_lifecycle.dart';
 
 class HomePage extends StatefulWidget {
@@ -11,12 +12,13 @@ class HomePage extends StatefulWidget {
 }
 
 const String STATE_LIFECYCLE = "State 生命周期";
+const String ITEM_LAYOUT = "布局约束";
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // 数据列表
-    final List<String> items = [STATE_LIFECYCLE, "布局组件", "Item 3"];
+    final List<String> items = [STATE_LIFECYCLE, ITEM_LAYOUT, "Item 3"];
 
     return Scaffold(
       appBar: AppBar(
@@ -41,7 +43,9 @@ class _HomePageState extends State<HomePage> {
     if (title == STATE_LIFECYCLE) {
       //未定义路由的跳转
       Navigator.push(context, MaterialPageRoute(builder: (context) => StateLifeCycle()));
-    } else {
+    } else if (title == ITEM_LAYOUT) {
+      Navigator.push(context, MaterialPageRoute(builder: (context) => LayoutConstraintPage()));
+    }else {
       Navigator.pushNamed(context, "new_page", arguments: "Hello");
     }
   }
