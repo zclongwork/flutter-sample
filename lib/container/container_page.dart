@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/container/inherited_widget_test_router.dart';
+import 'package:flutter_sample/container/scroll_controlle_test_route.dart';
+
+import 'infinite_list.dart';
 
 class ContainerPage extends StatefulWidget {
   const ContainerPage({super.key});
@@ -12,6 +16,14 @@ class ContainerPage extends StatefulWidget {
 class _ContainerPageState extends State<ContainerPage> {
 
   int _selectedIndex = 1;
+
+  final List<Widget> _widgetOptions = <Widget>[
+    InfiniteList(),
+    // home(),
+    // ScrollControllerTestRoute(),
+    // ScrollControllerTestRoute()
+    InheritedWidgetTestRouter()
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +45,18 @@ class _ContainerPageState extends State<ContainerPage> {
               icon: Icon(Icons.home),
               label: 'Home',
             ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.business),
+            //   label: 'Business',
+            // ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.school),
+            //   label: 'School',
+            // ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.business),
-              label: 'Business',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.school),
-              label: 'School',
-            ),
+              icon: Icon(Icons.share),
+              label: 'Share',
+            )
           ],
           currentIndex: _selectedIndex,
           fixedColor: Colors.blue,
@@ -70,26 +86,23 @@ class _ContainerPageState extends State<ContainerPage> {
                 ]
             )
         ),
-        body: Align(
-            alignment: Alignment.topCenter,
-            child:
-                Column(mainAxisAlignment: MainAxisAlignment.start, children: [
-              wContainer(BoxFit.none),
-              Text('Wendux'),
-              wContainer(BoxFit.contain),
-              Text('Flutter中国'),
-            ])));
+        body: _widgetOptions.elementAt(_selectedIndex));
+        // body: _home());
   }
 
-  Widget coloredBox(Color color) {
-    return Container(
-      color: color,
-      height: 5.0,
-      width: 5.0,
-    );
+  static Widget home() {
+    return Align(
+        alignment: Alignment.topCenter,
+        child:
+        Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+          wContainer(BoxFit.none),
+          Text('Wendux'),
+          wContainer(BoxFit.contain),
+          Text('Flutter中国'),
+        ]));
   }
 
-  Widget wContainer(BoxFit boxFit) {
+  static Widget wContainer(BoxFit boxFit) {
     return Container(
       width: 50,
       height: 50,
