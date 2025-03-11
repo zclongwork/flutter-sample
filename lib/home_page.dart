@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/layout/layout_constraint_page.dart';
+import 'package:flutter_sample/provider/async_build.dart';
+import 'package:flutter_sample/provider/provider_route.dart';
+import 'package:flutter_sample/provider/theme_test_route.dart';
 import 'package:flutter_sample/state/state_lifecycle.dart';
 
 import 'container/container_page.dart';
@@ -16,12 +19,22 @@ class HomePage extends StatefulWidget {
 const String STATE_LIFECYCLE = "State 生命周期";
 const String ITEM_LAYOUT = "布局约束";
 const String ITEM_CONTAINER = "容器类组件";
+const String ITEM_Provider = "跨组件状态管理Provider";
+const String ITEM_THEME = "颜色主题";
+const String ITEM_ASYNC = "异步更新UI";
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // 数据列表
-    final List<String> items = [STATE_LIFECYCLE, ITEM_LAYOUT, ITEM_CONTAINER];
+    final List<String> items = [
+      STATE_LIFECYCLE,
+      ITEM_LAYOUT,
+      ITEM_CONTAINER,
+      ITEM_Provider,
+      ITEM_THEME,
+      ITEM_ASYNC,
+    ];
 
     return Scaffold(
       appBar: AppBar(
@@ -55,6 +68,18 @@ class _HomePageState extends State<HomePage> {
       case ITEM_CONTAINER:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => ContainerPage()));
+        break;
+      case ITEM_Provider:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ProviderRoute()));
+        break;
+      case ITEM_THEME:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => ThemeTestRoute()));
+        break;
+      case ITEM_ASYNC:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => AsyncBuild()));
         break;
       default:
         Navigator.pushNamed(context, "new_page", arguments: "Hello");
