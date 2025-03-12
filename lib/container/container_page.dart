@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/container/inherited_widget_test_router.dart';
-import 'package:flutter_sample/container/scroll_controlle_test_route.dart';
 
 import 'infinite_list.dart';
 

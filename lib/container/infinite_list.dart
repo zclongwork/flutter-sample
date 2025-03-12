@@ -10,7 +10,7 @@ class InfiniteList extends StatefulWidget {
 
 class _InfiniteListState extends State<InfiniteList>{
   static const loadingTag = "##loading##"; //表尾标记
-  var _words = <String>[loadingTag];
+  final _words = <String>[loadingTag];
 
   @override
   void initState() {

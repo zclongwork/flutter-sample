@@ -9,7 +9,7 @@ class ScrollControllerTestRoute extends StatefulWidget {
 }
 
 class _ScrollControllerTestRouteState extends State<ScrollControllerTestRoute> {
-  ScrollController _controller = ScrollController();
+  final ScrollController _controller = ScrollController();
   bool showToTopBtn = false;
 
   @override
