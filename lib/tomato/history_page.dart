@@ -13,7 +13,10 @@ class HistoryPage extends StatelessWidget {
         title: const Text('历史记录'),
       ),
       body: FutureBuilder<List<TimerRecord>>(
-        future: Provider.of<TimerProvider>(context, listen: false).database.timerDao.findAllTimers(),
+        future: Provider.of<TimerProvider>(context, listen: false)
+            .database
+            .timerDao
+            .findAllTimers(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
@@ -27,7 +30,8 @@ class HistoryPage extends StatelessWidget {
               itemBuilder: (context, index) {
                 final timer = snapshot.data![index];
                 return Card(
-                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Column(
@@ -36,7 +40,8 @@ class HistoryPage extends StatelessWidget {
                         Text(
                           timer.type == '工作' ? '工作时间' : '休息时间',
                           style: TextStyle(
-                            color: timer.type == '工作' ? Colors.red : Colors.green,
+                            color:
+                                timer.type == '工作' ? Colors.red : Colors.green,
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
                           ),
@@ -44,7 +49,8 @@ class HistoryPage extends StatelessWidget {
                         const SizedBox(height: 8),
                         Text('开始时间: ${timer.formattedStartTime}'),
                         Text('结束时间: ${timer.formattedEndTime}'),
-                        Text('时长: ${_calculateDuration(timer.startTime, timer.endTime)}'),
+                        Text(
+                            '时长: ${_calculateDuration(timer.startTime, timer.endTime)}'),
                       ],
                     ),
                   ),

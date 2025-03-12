@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'history_page.dart';
 import 'timer_provider.dart';
 
 void main() async {
@@ -30,7 +31,9 @@ class TimerPage extends StatefulWidget {
   const TimerPage({super.key});
 
   @override
-  _TimerPageState createState() => _TimerPageState();
+  State<StatefulWidget> createState() {
+    return _TimerPageState();
+  }
 }
 
 class _TimerPageState extends State<TimerPage> {
@@ -47,6 +50,18 @@ class _TimerPageState extends State<TimerPage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('番茄钟'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.history),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HistoryPage()),
+                );
+              },
+              tooltip: '查看历史记录',
+            ),
+          ],
         ),
         body: Center(
           child: Column(

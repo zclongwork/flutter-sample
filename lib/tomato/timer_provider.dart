@@ -10,7 +10,7 @@ import 'database/app_database.dart';
 class TimerProvider with ChangeNotifier {
   final int _workDuration = 1 * 60; // 25分钟
   final int _breakDuration = 1 * 60; // 5分钟
-  int _currentDuration = 0;
+  int _currentDuration = 1 * 60;
   bool _isRunning = false;
   bool _isWorking = true;
   bool _isBreakPending = false;
