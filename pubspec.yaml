@@ -36,12 +36,13 @@ dependencies:
   cupertino_icons: ^1.0.8
   english_words: ^4.0.0
 
-  provider: ^6.1.2
-  floor: ^1.4.2
-
-  intl: ^0.18.1
-  flutter_local_notifications: ^17.2.1
-
+  provider: ^6.1.2 # 状态管理框架
+  floor: ^1.4.2 #rom数据库框架
+  flutter_localizations: # 官方国际化支持
+    sdk: flutter
+  intl: any # 处理复杂国际化格式（如日期、复数）
+  flutter_local_notifications: ^17.2.1 # 通知框架
+  logger: ^2.5.0 # 日志框架
 
   sqflite: any
   path: any
@@ -50,6 +51,7 @@ dev_dependencies:
     sdk: flutter
   floor_generator: ^1.4.2
   build_runner: ^2.1.2
+  intl_utils: ^2.8.0 # 自动生成国际化代码（可选但推荐）
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -63,6 +65,9 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
+  generate: true
+  assets:
+    - assets/images/
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
@@ -99,3 +104,7 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_intl:
+  enabled: true
+  class_name: AppLocalizations # 可选 默认为S
+#  main_local: en

@@ -6,6 +6,9 @@ import 'package:flutter_sample/tomato/database/timer_record.dart';
 
 import 'database/app_database.dart';
 
+import 'package:logger/logger.dart';
+
+var logger = Logger(printer: PrettyPrinter());
 
 class TimerProvider with ChangeNotifier {
   final int _workDuration = 1 * 60; // 25分钟
@@ -74,12 +77,13 @@ class TimerProvider with ChangeNotifier {
     if (_isWorking) {
       _showNotification('工作时间结束', '休息一下吧！');
       _isBreakPending = true;
-      _saveTimerRecord(DateTime.now(),
-          DateTime.now().add(Duration(seconds: _currentDuration)), '工作');
+      logger.i(" work end duration= $_workDuration");
+      _saveTimerRecord(DateTime.now().subtract(Duration(seconds: _workDuration)),
+          DateTime.now(), '工作');
     } else {
       _showNotification('休息时间结束', '继续工作吧！');
-      _saveTimerRecord(DateTime.now(),
-          DateTime.now().add(Duration(seconds: _currentDuration)), '休息');
+      _saveTimerRecord(DateTime.now().subtract(Duration(seconds: _breakDuration)),
+          DateTime.now(), '休息');
     }
     notifyListeners();
   }

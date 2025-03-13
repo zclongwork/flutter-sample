@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'history_page.dart';
 import 'timer_provider.dart';
+
+import 'package:flutter_sample/generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,10 +20,23 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (_) => TimerProvider(),
       child: MaterialApp(
-        title: '番茄钟',
+        onGenerateTitle: (context){
+          return AppLocalizations.of(context).appName;
+        },
         theme: ThemeData(
           primarySwatch: Colors.red,
         ),
+        localizationsDelegates: [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: [
+          const Locale('en'), // 英文
+          const Locale('zh'), // 中文
+        ],
+        locale: Locale('en'), // 手动指定语言（测试用）
         home: const TimerPage(),
       ),
     );
@@ -47,9 +63,10 @@ class _TimerPageState extends State<TimerPage> {
   @override
   Widget build(BuildContext context) {
     final timerProvider = Provider.of<TimerProvider>(context);
+    final String title = AppLocalizations.of(context).appName;
     return Scaffold(
         appBar: AppBar(
-          title: const Text('番茄钟'),
+          title: Text(title),
           actions: [
             IconButton(
               icon: const Icon(Icons.history),
@@ -94,7 +111,7 @@ class _TimerPageState extends State<TimerPage> {
                 backgroundColor: Colors.green,
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               ),
-              child: const Text('开始', style: TextStyle(fontSize: 18)),
+              child: Text(AppLocalizations.of(context).start, style: TextStyle(fontSize: 18)),
             ),
             const SizedBox(width: 20),
             ElevatedButton(
