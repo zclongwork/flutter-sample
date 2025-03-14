@@ -50,40 +50,40 @@ class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  /// `番茄钟`
+  /// `Tomato`
   String get appName {
     return Intl.message(
-      '番茄钟',
+      'Tomato',
       name: 'appName',
       desc: '',
       args: [],
     );
   }
 
-  /// `开始`
+  /// `Start`
   String get start {
     return Intl.message(
-      '开始',
+      'Start',
       name: 'start',
       desc: '',
       args: [],
     );
   }
 
-  /// `暂停`
+  /// `Stop`
   String get stop {
     return Intl.message(
-      '暂停',
+      'Stop',
       name: 'stop',
       desc: '',
       args: [],
     );
   }
 
-  /// `重制`
+  /// `Rest`
   String get reset {
     return Intl.message(
-      '重制',
+      'Rest',
       name: 'reset',
       desc: '',
       args: [],

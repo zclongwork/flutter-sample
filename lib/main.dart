@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/tomato/notifications/notification_helper.dart';
 
 import 'home_page.dart';
 import 'router/new_router.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  // await DatabaseHelper.instance.database;
+  // 初始化通知帮助类
+  NotificationHelper notificationHelper = NotificationHelper();
+  await notificationHelper.initialize();
   runApp(const MyApp());
 }
 

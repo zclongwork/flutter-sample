@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/layout/layout_constraint_page.dart';
 import 'package:flutter_sample/provider/async_build.dart';
+import 'package:flutter_sample/provider/notify_page.dart';
 import 'package:flutter_sample/provider/provider_route.dart';
 import 'package:flutter_sample/provider/theme_test_route.dart';
 import 'package:flutter_sample/state/state_lifecycle.dart';
@@ -16,24 +17,26 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-const String STATE_LIFECYCLE = "State 生命周期";
-const String ITEM_LAYOUT = "布局约束";
-const String ITEM_CONTAINER = "容器类组件";
-const String ITEM_Provider = "跨组件状态管理Provider";
-const String ITEM_THEME = "颜色主题";
-const String ITEM_ASYNC = "异步更新UI";
+const String stateLifecycle = "State 生命周期";
+const String itemLayout = "布局约束";
+const String itemContainer = "容器类组件";
+const String itemProvider = "跨组件状态管理Provider";
+const String itemTheme = "颜色主题";
+const String itemAsync = "异步更新UI";
+const String itemNotify = "通知栏通知";
 
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // 数据列表
     final List<String> items = [
-      STATE_LIFECYCLE,
-      ITEM_LAYOUT,
-      ITEM_CONTAINER,
-      ITEM_Provider,
-      ITEM_THEME,
-      ITEM_ASYNC,
+      stateLifecycle,
+      itemLayout,
+      itemContainer,
+      itemProvider,
+      itemTheme,
+      itemAsync,
+      itemNotify,
     ];
 
     return Scaffold(
@@ -57,29 +60,33 @@ class _HomePageState extends State<HomePage> {
 
   void _handleTap(BuildContext context, String title) {
     switch (title) {
-      case STATE_LIFECYCLE:
+      case stateLifecycle:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => StateLifeCycle()));
         break;
-      case ITEM_LAYOUT:
+      case itemLayout:
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => LayoutConstraintPage()));
         break;
-      case ITEM_CONTAINER:
+      case itemContainer:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => ContainerPage()));
         break;
-      case ITEM_Provider:
+      case itemProvider:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => ProviderRoute()));
         break;
-      case ITEM_THEME:
+      case itemTheme:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => ThemeTestRoute()));
         break;
-      case ITEM_ASYNC:
+      case itemAsync:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => AsyncBuild()));
+        break;
+      case itemNotify:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => NotifyPage()));
         break;
       default:
         Navigator.pushNamed(context, "new_page", arguments: "Hello");

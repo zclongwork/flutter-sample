@@ -1,7 +1,7 @@
 {
   "@@locale": "en",
-  "appName": "番茄钟",
-  "start": "开始",
-  "stop": "暂停",
-  "reset": "重制"
+  "appName": "Tomato",
+  "start": "Start",
+  "stop": "Stop",
+  "reset": "Rest"
 }

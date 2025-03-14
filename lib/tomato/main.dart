@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 import 'history_page.dart';
+import 'notifications/notification_helper.dart';
 import 'timer_provider.dart';
 
 import 'package:flutter_sample/generated/l10n.dart';
@@ -9,6 +10,9 @@ import 'package:flutter_sample/generated/l10n.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // await DatabaseHelper.instance.database;
+  // 初始化通知帮助类
+  NotificationHelper notificationHelper = NotificationHelper();
+  await notificationHelper.initialize();
   runApp(const MyApp());
 }
 
@@ -36,7 +40,7 @@ class MyApp extends StatelessWidget {
           const Locale('en'), // 英文
           const Locale('zh'), // 中文
         ],
-        locale: Locale('en'), // 手动指定语言（测试用）
+        // locale: Locale('en'), // 手动指定语言（测试用）
         home: const TimerPage(),
       ),
     );
@@ -64,6 +68,8 @@ class _TimerPageState extends State<TimerPage> {
   Widget build(BuildContext context) {
     final timerProvider = Provider.of<TimerProvider>(context);
     final String title = AppLocalizations.of(context).appName;
+    final NotificationHelper _notificationHelper = NotificationHelper();
+
     return Scaffold(
         appBar: AppBar(
           title: Text(title),
@@ -131,6 +137,11 @@ class _TimerPageState extends State<TimerPage> {
               onPressed: !timerProvider.isRunning
                   ? () {
                 timerProvider.resetTimer();
+
+                _notificationHelper.showNotification(
+                  title: 'Hello',
+                  body: 'This is a notification!',
+                );
               }
                   : null,
               style: ElevatedButton.styleFrom(
