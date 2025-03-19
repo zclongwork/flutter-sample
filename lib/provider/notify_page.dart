@@ -29,6 +29,25 @@ class _NotifyPageState extends State<NotifyPage>{
             onPressed: () {
               checkAndOpenNotificationSettings();
             },
+            style: ButtonStyle(
+              shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+                  RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8),
+                )
+              ),
+              foregroundColor: WidgetStateProperty.all<Color>(Colors.white),
+              backgroundColor: WidgetStateProperty.resolveWith<Color>(
+                    (Set<WidgetState> states) {
+                  const Set<WidgetState> interactiveStates = <WidgetState>{
+                    WidgetState.pressed,
+                  };
+                  if (states.any(interactiveStates.contains)) {
+                    return Colors.blue.withOpacity(0.5); // 按下时的背景颜色
+                  }
+                  return Colors.blue; // 默认背景颜色
+                },
+              ),
+            ),
             child: const Text("权限检查", style: TextStyle(fontSize: 18)),
           ),
           ElevatedButton(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/gesture/gesture_route.dart';
 import 'package:flutter_sample/layout/layout_constraint_page.dart';
 import 'package:flutter_sample/provider/async_build.dart';
 import 'package:flutter_sample/provider/notify_page.dart';
@@ -24,6 +25,7 @@ const String itemProvider = "跨组件状态管理Provider";
 const String itemTheme = "颜色主题";
 const String itemAsync = "异步更新UI";
 const String itemNotify = "通知栏通知";
+const String itemGesture = "手势";
 
 class _HomePageState extends State<HomePage> {
   @override
@@ -37,6 +39,7 @@ class _HomePageState extends State<HomePage> {
       itemTheme,
       itemAsync,
       itemNotify,
+      itemGesture,
     ];
 
     return Scaffold(
@@ -70,7 +73,7 @@ class _HomePageState extends State<HomePage> {
         break;
       case itemContainer:
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => ContainerPage()));
+          context, MaterialPageRoute(builder: (context) => ContainerPage()));
         break;
       case itemProvider:
         Navigator.push(
@@ -87,6 +90,10 @@ class _HomePageState extends State<HomePage> {
       case itemNotify:
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => NotifyPage()));
+        break;
+      case itemGesture:
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => GestureRoute()));
         break;
       default:
         Navigator.pushNamed(context, "new_page", arguments: "Hello");
