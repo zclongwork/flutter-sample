@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_sample/generated/l10n.dart';
 import 'package:provider/provider.dart';
+
+import '../localizations/bo_intl.dart';
 import 'history_page.dart';
 import 'notifications/notification_helper.dart';
 import 'timer_provider.dart';
-
-import 'package:flutter_sample/generated/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -35,10 +36,12 @@ class MyApp extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
+          BoMaterialLocalizations.delegate,
         ],
         supportedLocales: [
           const Locale('en'), // 英文
           const Locale('zh'), // 中文
+          const Locale('bo'), // 藏语
         ],
         // locale: Locale('en'), // 手动指定语言（测试用）
         home: const TimerPage(),
