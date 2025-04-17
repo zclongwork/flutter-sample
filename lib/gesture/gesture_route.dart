@@ -40,6 +40,7 @@ class GestureRoute extends StatelessWidget {
                 color: Colors.blue,
                 alignment: Alignment.center,
                 child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
                   onTapDown: (details) {
                     print('inner tap down');
                   },

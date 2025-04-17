@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_sample/generated/l10n.dart';
+import 'package:flutter_splash_screen/flutter_splash_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../localizations/bo_intl.dart';
@@ -63,6 +64,7 @@ class _TimerPageState extends State<TimerPage> {
   @override
   void initState() {
     super.initState();
+    hideScreen();
     // 初始化通知
     Provider.of<TimerProvider>(context, listen: false).initializeNotifications();
   }
@@ -193,5 +195,12 @@ class _TimerPageState extends State<TimerPage> {
     ),
     ),
     );
+  }
+
+  ///hide your splash screen
+  Future<void> hideScreen() async {
+    Future.delayed(Duration(milliseconds: 1800), () {
+      FlutterSplashScreen.hide();
+    });
   }
 }

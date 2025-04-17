@@ -46,6 +46,11 @@ dependencies:
 
   sqflite: any
   path: any
+
+  flutter_splash_screen: 3.0.0
+  fluttertoast: ^8.2.12
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -108,3 +113,4 @@ flutter_intl:
   enabled: true
   class_name: AppLocalizations # 可选 默认为S
 #  main_local: en
+

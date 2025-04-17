@@ -4,15 +4,25 @@ import android.app.NotificationManager
 import android.content.Context
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine;
+import android.os.Bundle
 
 import android.content.Intent
 import android.provider.Settings
 import androidx.core.app.NotificationManagerCompat
 import io.flutter.plugin.common.MethodChannel
 
+import org.devio.flutter.splashscreen.SplashScreen // add
+
 class MainActivity: FlutterActivity() {
 
     private val CHANNEL = "com.example.app/notification"
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        // SplashScreen.show(this)
+        // or enable full screen
+        SplashScreen.show(this, true)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
