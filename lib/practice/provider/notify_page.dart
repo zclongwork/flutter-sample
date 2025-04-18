@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../tomato/notifications/notification_helper.dart';
+import '../../tomato/notifications/notification_helper.dart';
 
 class NotifyPage extends StatefulWidget {
   const NotifyPage({super.key});

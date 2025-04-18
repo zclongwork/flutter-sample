@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart' hide Page;
-import 'package:flutter_sample/gesture/gesture_drag.dart';
+
+import 'gesture_drag.dart';
 
 class GestureRoute extends StatelessWidget {
   const GestureRoute({super.key});

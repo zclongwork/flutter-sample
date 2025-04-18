@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/gesture/gesture_route.dart';
-import 'package:flutter_sample/layout/layout_constraint_page.dart';
-import 'package:flutter_sample/provider/async_build.dart';
-import 'package:flutter_sample/provider/notify_page.dart';
-import 'package:flutter_sample/provider/provider_route.dart';
-import 'package:flutter_sample/provider/theme_test_route.dart';
-import 'package:flutter_sample/state/state_lifecycle.dart';
+import 'package:flutter_sample/practice/layout_constraint_page.dart';
+import 'package:flutter_sample/practice/provider/async_build.dart';
+import 'package:flutter_sample/practice/provider/notify_page.dart';
+import 'package:flutter_sample/practice/provider/provider_route.dart';
+import 'package:flutter_sample/practice/provider/theme_test_route.dart';
+import 'package:flutter_sample/practice/state_lifecycle.dart';
 
 import 'container/container_page.dart';
+import 'gesture/gesture_route.dart';
 
 class HomePage extends StatefulWidget {
   final String title;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/app_init.dart';
+import 'package:flutter_sample/practice/router/new_router.dart';
 import 'package:flutter_sample/tab_navigation.dart';
 import 'package:flutter_sample/tomato/notifications/notification_helper.dart';
 
-import 'home_page.dart';
-import 'router/new_router.dart';
+import 'practice/home_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

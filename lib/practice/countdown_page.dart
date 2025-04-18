@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/router/test_router.dart';
+import 'package:flutter_sample/practice/router/test_router.dart';
 
 class CountDownPage extends StatefulWidget {
   const CountDownPage({super.key, required this.title});

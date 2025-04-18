@@ -1,7 +1,7 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/provider/provider.dart';
+import 'package:flutter_sample/practice/provider/provider.dart';
 
 class ProviderRoute extends StatefulWidget {
   const ProviderRoute({super.key});

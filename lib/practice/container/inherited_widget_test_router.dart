@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/container/share_data_widget.dart';
+import 'package:flutter_sample/practice/container/share_data_widget.dart';
 
 class InheritedWidgetTestRouter extends StatefulWidget {
   const InheritedWidgetTestRouter({super.key});
