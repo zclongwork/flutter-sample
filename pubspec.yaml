@@ -49,6 +49,13 @@ dependencies:
 
   flutter_splash_screen: 3.0.0
   fluttertoast: ^8.2.12
+  http: ^1.3.0
+
+#  getX状态管理
+  get: ^4.7.2
+
+#  轮播
+  carousel_slider: ^5.0.0
 
 
 dev_dependencies:

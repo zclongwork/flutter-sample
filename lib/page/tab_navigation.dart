@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/page/home/home_page.dart';
 import 'package:flutter_sample/utils/toast_util.dart';
+import 'package:flutter_sample/viewmodel/tab_navigation_viewmodel.dart';
+import 'package:flutter_sample/widget/provider_widget.dart';
 
-import 'config/string.dart';
+import '../config/string.dart';
 
 class TabNavigation extends StatefulWidget {
   const TabNavigation({super.key});
 
   @override
-  _TabNavigationState createState() => _TabNavigationState();
+  State<TabNavigation> createState() => _TabNavigationState();
 }
 
 class _TabNavigationState extends State<TabNavigation> {
   DateTime lastTime = DateTime.now();
-  Widget _currentBody = Container(
-    color: Colors.blue,
-  );
 
-  int _currentIndex = 0;
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,37 +24,38 @@ class _TabNavigationState extends State<TabNavigation> {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
-        body: _currentBody,
-        bottomNavigationBar: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          type: BottomNavigationBarType.fixed,
-          selectedItemColor: Color(0xff000000),
-          unselectedItemColor: Color(0xff9a9a9a),
-          items: _item(),
-          onTap: _onTap,
+        body: PageView(
+          controller: _pageController,
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            HomePage(title: "首页"),
+            Container(color: Colors.brown),
+            Container(color: Colors.amber),
+            Container(color: Colors.red),
+          ],
         ),
+        bottomNavigationBar: ProviderWidget(
+            model: TabNavigationViewModel(),
+            builder: (context, model, child) {
+              return BottomNavigationBar(
+                currentIndex: model.currentIndex,
+                // 固定title
+                type: BottomNavigationBarType.fixed,
+                selectedItemColor: Color(0xff000000),
+                unselectedItemColor: Color(0xff9a9a9a),
+                items: _item(),
+                // index 值为0，1，2，3
+                onTap: (index) {
+                  if (model.currentIndex != index) {
+                    // 直接跳转不带动画，自动 setState
+                    _pageController.jumpToPage(index);
+                    model.changeBottomTabIndex(index);
+                  }
+                },
+              );
+            }),
       ),
     );
-  }
-
-  _onTap(int index) {
-    switch (index) {
-      case 0:
-        _currentBody = Container(color: Colors.blue);
-        break;
-      case 1:
-        _currentBody = Container(color: Colors.brown);
-        break;
-      case 2:
-        _currentBody = Container(color: Colors.amber);
-        break;
-      case 3:
-        _currentBody = Container(color: Colors.red);
-        break;
-    }
-    setState(() {
-      _currentIndex = index;
-    });
   }
 
   List<BottomNavigationBarItem> _item() {
@@ -89,7 +90,7 @@ class _TabNavigationState extends State<TabNavigation> {
   Future<bool> _onWillPop() async {
     if (DateTime.now().difference(lastTime) > Duration(seconds: 2)) {
       lastTime = DateTime.now();
-      LeoToast.showTip(LeoString.exit_tip);
+      ToastUtil.showTip(LeoString.exit_tip);
       return false;
     } else {
       // 自动出栈

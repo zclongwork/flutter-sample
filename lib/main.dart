@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample/app_init.dart';
 import 'package:flutter_sample/practice/router/new_router.dart';
-import 'package:flutter_sample/tab_navigation.dart';
+import 'package:flutter_sample/page/tab_navigation.dart';
 import 'package:flutter_sample/tomato/notifications/notification_helper.dart';
 
 import 'practice/home_page.dart';
@@ -57,10 +57,10 @@ class MyApp extends StatelessWidget {
 class GetMaterialAppWidget extends StatefulWidget {
   final Widget child;
 
-  GetMaterialAppWidget({ Key? key, required this.child}) : super(key: key);
+  const GetMaterialAppWidget({ super.key, required this.child});
 
   @override
-  _GetMaterialAppWidgetState createState() => _GetMaterialAppWidgetState();
+  State<GetMaterialAppWidget> createState() => _GetMaterialAppWidgetState();
 }
 
 class _GetMaterialAppWidgetState extends State<GetMaterialAppWidget> {

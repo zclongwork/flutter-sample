@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class LeoToast {
+class ToastUtil {
 
   /// 弹出正常 toast 信息
   static void showTip(String msg) {
