@@ -54,9 +54,12 @@ dependencies:
 #  getX状态管理
   get: ^4.7.2
 
-#  轮播
+#  banner轮播
   carousel_slider: ^5.0.0
 
+  extended_image: 10.0.1
+  # 8.下拉刷新和上拉加载的库
+  pull_to_refresh_flutter3: ^2.0.2
 
 dev_dependencies:
   flutter_test:

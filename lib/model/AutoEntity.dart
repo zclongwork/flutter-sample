@@ -6,7 +6,7 @@
 
 class AutoEntity {
   AutoEntity({
-      List<IssueList>? issueList, 
+      List<Issue>? issueList,
       String? nextPageUrl, 
       num? nextPublishTime, 
       String? newestIssueType, 
@@ -22,7 +22,7 @@ class AutoEntity {
     if (json['issueList'] != null) {
       _issueList = [];
       json['issueList'].forEach((v) {
-        _issueList?.add(IssueList.fromJson(v));
+        _issueList?.add(Issue.fromJson(v));
       });
     }
     _nextPageUrl = json['nextPageUrl'];
@@ -30,12 +30,12 @@ class AutoEntity {
     _newestIssueType = json['newestIssueType'];
     _dialog = json['dialog'];
   }
-  List<IssueList>? _issueList;
+  List<Issue>? _issueList;
   String? _nextPageUrl;
   num? _nextPublishTime;
   String? _newestIssueType;
   dynamic _dialog;
-AutoEntity copyWith({  List<IssueList>? issueList,
+AutoEntity copyWith({  List<Issue>? issueList,
   String? nextPageUrl,
   num? nextPublishTime,
   String? newestIssueType,
@@ -46,7 +46,7 @@ AutoEntity copyWith({  List<IssueList>? issueList,
   newestIssueType: newestIssueType ?? _newestIssueType,
   dialog: dialog ?? _dialog,
 );
-  List<IssueList>? get issueList => _issueList;
+  List<Issue>? get issueList => _issueList;
   String? get nextPageUrl => _nextPageUrl;
   num? get nextPublishTime => _nextPublishTime;
   String? get newestIssueType => _newestIssueType;
@@ -73,8 +73,8 @@ AutoEntity copyWith({  List<IssueList>? issueList,
 /// itemList : [{"type":"video","data":{"dataType":"VideoBeanForClient","id":329312,"title":"漫步镰仓，在小镇感受生活的本味","description":"逃离东京的喧嚣，漫步镰仓，沉浸在思绪中。创作者用 Lumix S5IIX 相机捕捉了这座古老城市的宁静与美丽，古老寺庙和海岸的柔和波光，复古风格的色调与胶片感的质感相结合，充满治愈。 From Daniel Quarg","library":"DAILY","tags":[{"id":10,"name":"跟着开眼看世界","actionUrl":"eyepetizer://tag/10/?title=%E8%B7%9F%E7%9D%80%E5%BC%80%E7%9C%BC%E7%9C%8B%E4%B8%96%E7%95%8C","adTrack":null,"desc":"去你想去的地方，发现世界的美","bgPicture":"http://img.kaiyanapp.com/7ea328a893aa1f092b9328a53494a267.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/50dab5468ecd2dbe5eb99dab5d608a0a.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":14},{"id":675,"name":"摄影艺术","actionUrl":"eyepetizer://tag/675/?title=%E6%91%84%E5%BD%B1%E8%89%BA%E6%9C%AF","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/c2f92f2aa503674c0e344d565e7f406b.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/c2f92f2aa503674c0e344d565e7f406b.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":196,"name":"清新","actionUrl":"eyepetizer://tag/196/?title=%E6%B8%85%E6%96%B0","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/9824ae7d052ca22de0a29e09d10364d8.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/9824ae7d052ca22de0a29e09d10364d8.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":194,"name":"复古","actionUrl":"eyepetizer://tag/194/?title=%E5%A4%8D%E5%8F%A4","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/6fb2263db0fce0f730dea0551df17abf.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":202,"name":"唯美","actionUrl":"eyepetizer://tag/202/?title=%E5%94%AF%E7%BE%8E","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/965a0a74d0af871eb174b5c7def6fd6d.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/965a0a74d0af871eb174b5c7def6fd6d.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":148,"name":"匠心","actionUrl":"eyepetizer://tag/148/?title=%E5%8C%A0%E5%BF%83","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/cf568288dc8087fa728308f2623b9527.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/cf568288dc8087fa728308f2623b9527.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":1019,"name":"旅行","actionUrl":"eyepetizer://tag/1019/?title=%E6%97%85%E8%A1%8C","adTrack":null,"desc":"世界这么大，总有你的目的地","bgPicture":"http://img.kaiyanapp.com/67b5aa7b489b33e7894e04d293e9b01f.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/67b5aa7b489b33e7894e04d293e9b01f.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0}],"consumption":{"collectionCount":252,"shareCount":37,"replyCount":5,"realCollectionCount":19},"resourceType":"video","slogan":null,"provider":{"name":"YouTube","alias":"youtube","icon":"http://ali-img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"旅行","author":{"id":1313,"icon":"http://ali-img.kaiyanapp.com/385d659e77af15fa4be37fe638c75917.jpeg?imageMogr2/quality/60/format/jpg","name":"全球旅行视频精选","description":"在这个世界上的很多地方都有着美丽的景色，我们用相机用镜头记录下这一切。","link":"","latestReleaseTime":1744938002000,"videoNum":3391,"adTrack":null,"follow":{"itemType":"author","itemId":1313,"followed":false},"shield":{"itemType":"author","itemId":1313,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://ali-img.kaiyanapp.com/54777cfdbd7034da2673b70ec31bef4e.jpeg?imageMogr2/quality/60/format/jpg","detail":"http://ali-img.kaiyanapp.com/54777cfdbd7034da2673b70ec31bef4e.jpeg?imageMogr2/quality/60/format/jpg","blurred":"http://ali-img.kaiyanapp.com/0bda0d0381d893c08df618b2f63a4f1d.jpeg?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/54777cfdbd7034da2673b70ec31bef4e.jpeg?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=329312&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss&udid=","thumbPlayUrl":null,"duration":110,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=329312","forWeibo":"https://m.eyepetizer.net/u1/video-detail?video_id=329312&resource_type=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1744938002000,"playInfo":[],"campaign":null,"waterMarks":null,"ad":false,"adTrack":[],"type":"NORMAL","titlePgc":"旅行 日本","descriptionPgc":"","remark":"","ifLimitVideo":false,"searchWeight":0,"brandWebsiteInfo":null,"videoPosterBean":null,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1744938000000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"逃离东京的喧嚣，漫步镰仓，沉浸在思绪中。创作者用 Lumix S5IIX 相机捕捉了这座古老城市的宁静与美丽，古老寺庙和海岸的柔和波光，复古风格的色调与胶片感的质感相结合，充满治愈。 From Daniel Quarg","collected":false,"reallyCollected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null,"recallSource":null,"recall_source":null},"trackingData":null,"tag":null,"id":0,"adIndex":-1},{"type":"video","data":{"dataType":"VideoBeanForClient","id":329314,"title":"飞到外太空的脑洞，超科幻未来AI短片","description":"如果人类与人工智能联合起来，只要我们团结一心，就能到达超越时代。这是由 Aze Alter 编写、导演和编辑，由 Nyukyung 联合制作的 AI 科幻短片「超越时代」。 From Aze Alter","library":"DAILY","tags":[{"id":744,"name":"每日创意灵感","actionUrl":"eyepetizer://tag/744/?title=%E6%AF%8F%E6%97%A5%E5%88%9B%E6%84%8F%E7%81%B5%E6%84%9F","adTrack":null,"desc":"技术与审美结合，探索视觉的无限可能","bgPicture":"http://img.kaiyanapp.com/bc2479c09cd15cb93b69d82e5f21c3fc.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/bc2479c09cd15cb93b69d82e5f21c3fc.png?imageMogr2/quality/60/format/jpg","tagRecType":"IMPORTANT","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":200,"name":"酷炫","actionUrl":"eyepetizer://tag/200/?title=%E9%85%B7%E7%82%AB","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/71f39f985df512d0d9fb52b82737bcf5.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/71f39f985df512d0d9fb52b82737bcf5.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":797,"name":"人工智能","actionUrl":"eyepetizer://tag/797/?title=%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/6a8eb7804afb358f81bc0700a9107d36.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/6a8eb7804afb358f81bc0700a9107d36.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":122,"name":"科幻","actionUrl":"eyepetizer://tag/122/?title=%E7%A7%91%E5%B9%BB","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/417a8466c670ccde688bb4b525ddf23d.jpeg?imageMogr2/quality/100","headerImage":"http://img.kaiyanapp.com/114beec25470880881352171834ddf43.jpeg?imageMogr2/quality/60","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":146,"name":"666","actionUrl":"eyepetizer://tag/146/?title=666","adTrack":null,"desc":null,"bgPicture":"https://i.ytimg.com/vi/MKWWhf8RAV8/maxresdefault.jpg","headerImage":"http://img.kaiyanapp.com/522f7e51abb07a4a4438b82ee54174a4.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":148,"name":"匠心","actionUrl":"eyepetizer://tag/148/?title=%E5%8C%A0%E5%BF%83","adTrack":null,"desc":null,"bgPicture":"http://img.kaiyanapp.com/cf568288dc8087fa728308f2623b9527.jpeg?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/cf568288dc8087fa728308f2623b9527.jpeg?imageMogr2/quality/60/format/jpg","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0},{"id":2,"name":"创意","actionUrl":"eyepetizer://tag/2/?title=%E5%88%9B%E6%84%8F","adTrack":null,"desc":"技术与审美结合，探索视觉的无限可能","bgPicture":"http://img.kaiyanapp.com/1b457058cf2b317304ff9f70543c040d.png?imageMogr2/quality/60/format/jpg","headerImage":"http://img.kaiyanapp.com/fdefdb34cbe3d2ac9964d306febe9025.jpeg?imageMogr2/quality/100","tagRecType":"NORMAL","childTagList":null,"childTagIdList":null,"haveReward":false,"ifNewest":false,"newestEndTime":null,"communityIndex":0}],"consumption":{"collectionCount":590,"shareCount":68,"replyCount":6,"realCollectionCount":95},"resourceType":"video","slogan":"","provider":{"name":"YouTube","alias":"youtube","icon":"http://ali-img.kaiyanapp.com/fa20228bc5b921e837156923a58713f6.png"},"category":"创意","author":{"id":2161,"icon":"http://ali-img.kaiyanapp.com/f4a9aba1c6857ee0cefcdc5aee0a1fc9.png?imageMogr2/quality/60/format/jpg","name":"全球创意视频精选","description":"我们精选最有创意的视频，我们用技术与审美结合，探索视觉的无限可能。","link":"","latestReleaseTime":1744938012000,"videoNum":2326,"adTrack":null,"follow":{"itemType":"author","itemId":2161,"followed":false},"shield":{"itemType":"author","itemId":2161,"shielded":false},"approvedNotReadyVideoCount":0,"ifPgc":true,"recSort":0,"expert":false},"cover":{"feed":"http://ali-img.kaiyanapp.com/4f11ce0e8003f6f6390589c1effb5f4b.png?imageMogr2/quality/60/format/jpg","detail":"http://ali-img.kaiyanapp.com/4f11ce0e8003f6f6390589c1effb5f4b.png?imageMogr2/quality/60/format/jpg","blurred":"http://ali-img.kaiyanapp.com/cb45b5ead6a76d529a8639659c23c7a5.png?imageMogr2/quality/60/format/jpg","sharing":null,"homepage":"http://img.kaiyanapp.com/4f11ce0e8003f6f6390589c1effb5f4b.png?imageView2/1/w/720/h/560/format/jpg/q/75|watermark/1/image/aHR0cDovL2ltZy5rYWl5YW5hcHAuY29tL2JsYWNrXzMwLnBuZw==/dissolve/100/gravity/Center/dx/0/dy/0|imageslim"},"playUrl":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=329314&resourceType=video&editionType=default&source=aliyun&playUrlType=url_oss&udid=","thumbPlayUrl":null,"duration":204,"webUrl":{"raw":"http://www.eyepetizer.net/detail.html?vid=329314","forWeibo":"https://m.eyepetizer.net/u1/video-detail?video_id=329314&resource_type=video&utm_campaign=routine&utm_medium=share&utm_source=weibo&uid=0"},"releaseTime":1744938012000,"playInfo":[{"height":1012,"width":1920,"urlList":[{"name":"aliyun","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=329314&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss&udid=","size":22096351},{"name":"ucloud","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=329314&resourceType=video&editionType=high&source=ucloud&playUrlType=url_oss&udid=","size":22096351}],"name":"高清","type":"high","url":"http://baobab.kaiyanapp.com/api/v1/playUrl?vid=329314&resourceType=video&editionType=high&source=aliyun&playUrlType=url_oss&udid="}],"campaign":null,"waterMarks":null,"ad":false,"adTrack":[],"type":"NORMAL","titlePgc":"创意","descriptionPgc":"","remark":null,"ifLimitVideo":false,"searchWeight":0,"brandWebsiteInfo":null,"videoPosterBean":null,"idx":0,"shareAdTrack":null,"favoriteAdTrack":null,"webAdTrack":null,"date":1744938000000,"promotion":null,"label":null,"labelList":[],"descriptionEditor":"如果人类与人工智能联合起来，只要我们团结一心，就能到达超越时代。这是由 Aze Alter 编写、导演和编辑，由 Nyukyung 联合制作的 AI 科幻短片「超越时代」。 From Aze Alter","collected":false,"reallyCollected":false,"played":false,"subtitles":[],"lastViewTime":null,"playlists":null,"src":null,"recallSource":null,"recall_source":null},"trackingData":null,"tag":null,"id":0,"adIndex":-1},null]
 /// count : 8
 
-class IssueList {
-  IssueList({
+class Issue {
+  Issue({
       num? releaseTime, 
       String? type, 
       num? date, 
@@ -89,7 +89,7 @@ class IssueList {
     _count = count;
 }
 
-  IssueList.fromJson(dynamic json) {
+  Issue.fromJson(dynamic json) {
     _releaseTime = json['releaseTime'];
     _type = json['type'];
     _date = json['date'];
@@ -108,13 +108,13 @@ class IssueList {
   num? _publishTime;
   List<Item>? _itemList;
   num? _count;
-IssueList copyWith({  num? releaseTime,
+Issue copyWith({  num? releaseTime,
   String? type,
   num? date,
   num? publishTime,
   List<Item>? itemList,
   num? count,
-}) => IssueList(  releaseTime: releaseTime ?? _releaseTime,
+}) => Issue(  releaseTime: releaseTime ?? _releaseTime,
   type: type ?? _type,
   date: date ?? _date,
   publishTime: publishTime ?? _publishTime,

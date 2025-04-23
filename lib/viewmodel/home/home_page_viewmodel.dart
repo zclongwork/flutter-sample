@@ -1,54 +1,47 @@
-import 'dart:convert';
-import 'package:flutter_sample/http/http_manager.dart';
-import 'package:flutter_sample/model/AutoEntity.dart';
-import 'package:flutter_sample/viewmodel/base_change_notifier.dart';
+import 'package:flutter_sample/model/issue_entity.dart';
+import 'package:flutter_sample/viewmodel/base_list_viewmodel.dart';
 import 'package:logger/logger.dart';
 
 import '../../http/Url.dart';
-import '../../utils/toast_util.dart';
-import '../../widget/loading_state_widget.dart';
+import '../../model/AutoEntity.dart';
 
 var logger = Logger(printer: PrettyPrinter());
 
-class HomePageViewModel extends BaseChangeNotifier {
+class HomePageViewModel extends BaseListViewModel<Item, IssueEntity> {
   List<Item> bannerList = [];
-
-  void refresh() {
-    HttpManager.getData(
-        Url.feedUrl,
-        headers: Url.httpHeader,
-        success: (result) {
-          // logger.i(result);
-          Map<String, dynamic> map = jsonDecode(result);
-          List<dynamic> data = map["issueList"];
-          Map<String, dynamic>  outer = data[0];
-
-          List<dynamic> banners = outer["itemList"];
-          if (banners.isNotEmpty) {
-            // banners.map((item) => Item.fromJson(item)).toList();
-            for (var element in banners) {
-              bannerList.add(Item.fromJson(element));
-            }
-          }
-          // 移除类型为 'banner2'
-          bannerList.removeWhere((element) => element.type == 'banner2');
-
-          logger.i("banner: ${bannerList.length}");
-          viewState = ViewState.loaded;
-        },
-        fail: (e) {
-          viewState = ViewState.error;
-          logger.e(e);
-          ToastUtil.showError(e.toString());
-        },
-        complete: () {
-          notifyListeners();
-        });
+  @override
+  IssueEntity getModel(Map<String, dynamic> json) {
+    return IssueEntity.fromJson(json);
   }
 
-  retry() {
-    viewState = ViewState.loading;
-    notifyListeners();
-    refresh();
+  @override
+  String getUrl() {
+    return Url.feedUrl;
   }
+
+  @override
+  void getData(List<Item>? list) {
+    if (list != null) {
+      bannerList = list;
+      itemList.clear();
+      //为Banner占位，后面要接list列表
+      itemList.add(Item());
+    }
+  }
+
+
+  @override
+  void removeUselessData(List<Item>? list) {
+    // 移除类型为 'banner2' 的数据
+    list?.removeWhere((item) {
+      return item.type == 'banner2';
+    });
+  }
+
+  @override
+  void doExtraAfterRefresh() async {
+    // 此处调用加载更多，是为了获取首次列表数据，因为第一个列表数据用来做banner数据了。
+    await loadMore();
+  }
+
 }
