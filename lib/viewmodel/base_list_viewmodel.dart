@@ -41,7 +41,7 @@ abstract class BaseListViewModel<T, M extends PageModel<T>>
 
   //下拉刷新
   void refresh() {
-    HttpManager.getData(
+    HttpManager().getData(
       getUrl(),
       success: (json) {
         M model = getModel(json);
@@ -72,7 +72,7 @@ abstract class BaseListViewModel<T, M extends PageModel<T>>
       refreshController.loadNoData();
       return;
     }
-    HttpManager.getData(nextPageUrl!, success: (json) {
+    HttpManager().getData(nextPageUrl!, success: (json) {
       M model = getModel(json);
       removeUselessData(model.itemList);
       // 将model.itemList数据，接到 itemList 数组后面
