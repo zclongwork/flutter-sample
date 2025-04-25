@@ -62,6 +62,11 @@ dependencies:
   # 8.下拉刷新和上拉加载的库
   pull_to_refresh_flutter3: ^2.0.2
 
+  # 11.视频播放库
+  video_player: ^2.9.5
+  # 12.对 video_player库 进行了一层封装，便于上层使用
+  chewie: ^1.11.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

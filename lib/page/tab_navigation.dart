@@ -4,6 +4,8 @@ import 'package:flutter_sample/utils/toast_util.dart';
 import 'package:flutter_sample/viewmodel/tab_navigation_viewmodel.dart';
 import 'package:flutter_sample/widget/provider_widget.dart';
 
+import 'package:flutter_sample/practice/home_page.dart' as prcHome;
+
 import '../config/string.dart';
 
 class TabNavigation extends StatefulWidget {
@@ -31,7 +33,7 @@ class _TabNavigationState extends State<TabNavigation> {
             HomePage(title: "首页"),
             Container(color: Colors.brown),
             Container(color: Colors.amber),
-            Container(color: Colors.red),
+            prcHome.HomePage(),
           ],
         ),
         bottomNavigationBar: ProviderWidget(

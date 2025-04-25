@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sample/utils/toast_util.dart';
+import 'package:flutter_sample/config/route_configs.dart';
+import 'package:flutter_sample/utils/navigator_util.dart';
 
 import '../model/AutoEntity.dart';
 import '../utils/cache_image.dart';
@@ -27,8 +28,7 @@ class ListItemWidget extends StatelessWidget {
         // GestureDetector：手势识别 -- Inkwell
         GestureDetector(
           onTap: () {
-            ToastUtil.showTip('点击了,跳转详情页');
-            // TODO:跳转详情页
+            toNamed(RouterConfigs.detail, item.data);
           },
           child: Padding(
             padding: EdgeInsets.fromLTRB(15, 10, 15, 10),

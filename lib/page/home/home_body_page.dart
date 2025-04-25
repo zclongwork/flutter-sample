@@ -124,7 +124,6 @@ class _HomeBodyPageState extends State<HomeBodyPage>
                     height: 200,
                   )
               ),
-              // child: Image.network(item.data!.cover!.feed!),
               // child: Image.network("http://ali-img.kaiyanapp.com/ed58ca1331472440da3bc7a2100746ad.png?imageMogr2/quality/60/format/jpg"),
             );
           }).toList(),
