@@ -26,12 +26,12 @@ class HttpManager {
         receiveTimeout: const Duration(seconds: 5));
     _dio = Dio(options);
     // 需要抓包的话，可将下方代码 开启
-   // initAdapter();
+   initAdapter();
   }
 
 
   // 模拟器配置代理：
-  // adb shell settings put global http_proxy 10.200.44.218:8888
+  // adb shell settings put global http_proxy 10.200.45.140:8888
   // 移除代理：
   // adb shell settings delete global http_proxy
   void initAdapter() {
@@ -39,7 +39,7 @@ class HttpManager {
       // Config the client.
       return HttpClient()
         ..findProxy = (uri) {
-          return 'PROXY 10.200.44.218:8888'; // 代理服务器地址和端口
+          return 'PROXY 10.200.45.140:8888'; // 代理服务器地址和端口
           // return 'PROXY 192.168.18.238:8888'; // 代理服务器地址和端口
         }
         ..badCertificateCallback = (cert, host, port) => true; // 忽略证书验
@@ -73,6 +73,7 @@ class HttpManager {
       }
     } catch (e) {
       fail(e);
+      logger.e("error getData $url ${e.toString()}");
     } finally {
       if (complete != null) {
         complete();

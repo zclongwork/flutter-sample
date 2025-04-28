@@ -1,15 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/material.dart' hide CarouselController;
 import 'package:flutter/material.dart';
+import 'package:flutter_sample/state/base_list_state.dart';
 import 'package:flutter_sample/viewmodel/home/home_page_viewmodel.dart';
-import 'package:flutter_sample/widget/provider_widget.dart';
-import 'package:pull_to_refresh_flutter3/pull_to_refresh_flutter3.dart';
 
 import '../../model/AutoEntity.dart';
 import '../../utils/cache_image.dart';
 import '../../widget/list_item_widget.dart';
-import '../../widget/loading_state_widget.dart';
-
-import 'package:flutter/material.dart' hide CarouselController;
 
 const TEXT_HEADER_TYPE = 'textHeader';
 
@@ -20,38 +17,16 @@ class HomeBodyPage extends StatefulWidget {
   State<HomeBodyPage> createState() => _HomeBodyPageState();
 }
 
-class _HomeBodyPageState extends State<HomeBodyPage>
-    with AutomaticKeepAliveClientMixin {
-
-  var model =HomePageViewModel();
+class _HomeBodyPageState extends BaseListState<Item, HomePageViewModel, HomeBodyPage> {
 
   @override
-  Widget build(BuildContext context) {
-    super.build(context);
+  bool get wantKeepAlive => true;
 
-    return ProviderWidget<HomePageViewModel>(
-        model: model,
-        onModelInit:(model) => model.refresh(),
-        builder: (context, model, child) {
-          return LoadingStateWidget(
-            viewState: model.viewState,
-            onReload: model.retry,
-            child: Container(
-              color: Colors.white,
-              // child: _getContentChild(),
-              child: SmartRefresher(
-                controller: model.refreshController,
-                onRefresh: model.refresh,
-                onLoading: model.loadMore,
-                enablePullUp: true,
-                child: _getContentChild(),
-                ),
-            ),
-          );
-        });
-  }
+  @override
+  HomePageViewModel get viewModel => HomePageViewModel();
 
-  _getContentChild() {
+  @override
+  Widget getContentChild(HomePageViewModel model) {
     return ListView.separated(
       separatorBuilder: (context, index) {
         return Padding(
@@ -89,7 +64,7 @@ class _HomeBodyPageState extends State<HomeBodyPage>
       padding: EdgeInsets.only(top: 15, bottom: 5),
       child: Center(
         child: Text(
-          item.data?.title ?? "title",
+          item.data?.text ?? "title",
           style: TextStyle(
             //  bold:粗体
               fontSize: 18,
@@ -165,8 +140,5 @@ class _HomeBodyPageState extends State<HomeBodyPage>
       ],
     );
   }
-
-  @override
-  bool get wantKeepAlive => true;
 
 }

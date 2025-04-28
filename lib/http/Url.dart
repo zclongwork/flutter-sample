@@ -23,6 +23,8 @@ class Url {
   // discovery
   static String communityUrl = '${baseUrl}v7/community/tab/rec';
   static String categoryUrl = '${baseUrl}v4/categories';
+
+  // http://baobab.kaiyanapp.com/api/v4/tabs/follow
   static String followUrl = '${baseUrl}v4/tabs/follow';
   static String categoryVideoUrl = '${baseUrl}v4/categories/videoList?';
   static String newsUrl =

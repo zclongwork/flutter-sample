@@ -87,7 +87,7 @@ abstract class BaseListViewModel<T, M extends PageModel<T>>
   }
 
   //错误重试
-  retry() {
+  void retry() {
     viewState = ViewState.loading;
     notifyListeners();
     refresh();

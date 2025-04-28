@@ -7,6 +7,7 @@ import 'package:flutter_sample/widget/provider_widget.dart';
 import 'package:flutter_sample/practice/home_page.dart' as prcHome;
 
 import '../config/string.dart';
+import 'discovery/discovery_page.dart';
 
 class TabNavigation extends StatefulWidget {
   const TabNavigation({super.key});
@@ -31,7 +32,7 @@ class _TabNavigationState extends State<TabNavigation> {
           physics: NeverScrollableScrollPhysics(),
           children: [
             HomePage(title: "首页"),
-            Container(color: Colors.brown),
+            DiscoveryPage(),
             Container(color: Colors.amber),
             prcHome.HomePage(),
           ],
