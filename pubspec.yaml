@@ -66,6 +66,7 @@ dependencies:
   video_player: ^2.9.5
   # 12.对 video_player库 进行了一层封装，便于上层使用
   chewie: ^1.11.3
+  animations: 2.0.11
 
 dev_dependencies:
   flutter_test:

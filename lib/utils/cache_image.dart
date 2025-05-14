@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 
 //封装带缓存的Image
 Widget cacheImage(String url,
-    {required double width,
-      required double height,
+    {double? width,
+      double? height,
       fit = BoxFit.cover,
     BorderRadius borderRadius = BorderRadius.zero,
     BoxShape shape = BoxShape.rectangle,
